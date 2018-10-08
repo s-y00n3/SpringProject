@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.student.mapper.StudentMapper">
+	
+	<insert id="create">
+		insert into students(no, id, name, password, email, savedname )
+		values(#{no}, #{id}, #{name}, #{password}, #{email}, #{savedName})
+	</insert>
+	
+	<select id="selectById"  resultType="StudentVO">
+		select no, id, name, password, email, regdate, savedName
+		from students
+		where id=#{id}
+	</select>
+	
+	<update id="update">
+		update students
+		set no=#{no}, name=#{name}, password=#{password}, email=#{email}, savedName=#{savedName}
+		where id=#{id}
+	</update>
+	
+	<delete id="delete">
+		delete students
+		from students
+		where id=#{id}
+	</delete>
+	
+	<select id="selectAll" resultType="StudentVO">
+		select no, id, name, password, email, regdate, savedName
+		from students
+		order by no asc				
+	</select>
+</mapper>
